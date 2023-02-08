@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block title %}
+    <title>FH Dortmund</title>
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1 style="color: black" class="mt-3 mb-3 text-center">Students</h1>
+
+    <div class="container mt-3 mb-3">
+        <div class="row">
+            {% for student in students %}
+                <div class="col-6">
+                    <div class="card mb-3">
+                        <div class="card-body text-orange">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h6 class="card-title">Full name</h6>
+                                    <p class="card-text">{{ student.first_name }} {{ student.last_name }}</p>
+                                    <h6 class="card-title">Date of birth</h6>
+                                    <p class="card-text">{{ student.date_of_birth }}</p>
+                                    <h6 class="card-title">Phone number</h6>
+                                    <p class="card-text">{{ student.phone_number }}</p>
+                                    <h6 class="card-title">E-mail</h6>
+                                    <p class="card-text">{{ student.email }}</p>
+                                </div>
+
+
+                                <div class="col-6">
+                                    <h6 class="card-title">Street</h6>
+                                    <p class="card-text">{{ student.street }} {{ student.street_number }}</p>
+                                    <h6 class="card-title">City</h6>
+                                    <p class="card-text">{{ student.city }}</p>
+                                    <h6 class="card-title">Post code</h6>
+                                    <p class="card-text">{{ student.post_number }}</p>
+                                    <h6 class="card-title">Country</h6>
+                                    <p class="card-text">{{ student.country }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block index_script %}
+
+{% endblock %}

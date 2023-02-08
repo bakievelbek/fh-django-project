@@ -1,0 +1,20 @@
+{% load i18n %}
+{% load static %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+{% block footer %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <a class="navbar-brand mb-3" href="{% url 'index' %}"> <img height="50" onload="resize()"
+                                                                           src="/static/img/logo.png" alt=""
+                                                                           class="d-inline-block align-text-top">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}

@@ -1,0 +1,23 @@
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+.DS_Store
+
+### PyCharm ###
+__pycache__/
+*.py[cod]
+### Virtualenv ###
+
+ENV
+venv
+fh-project/settings.py
+
+bin/
+lib/
+pyvenv.cfg
+
+
+db.sqlite3
