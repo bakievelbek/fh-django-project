@@ -13,7 +13,6 @@ __pycache__/
 
 ENV
 venv
-fh-project/settings.py
 
 bin/
 lib/
