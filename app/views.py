@@ -1,6 +1,8 @@
 from app.forms import UserForm
 from app.models import User
 
+from http import HTTPStatus
+
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, UpdateView, DeleteView
 from django.urls import reverse
@@ -31,7 +33,8 @@ class IndexView(TemplateView):
                 return HttpResponseRedirect(reverse('professors'))
         else:
             self.context['user_form'] = form
-            return render(request, 'index.html', context=self.context)
+
+            return render(request, 'index.html', context=self.context, status=HTTPStatus.NOT_ACCEPTABLE)
 
 
 class StudentsListView(ListView):
