@@ -1,13 +1,14 @@
 from app.forms import UserForm
 from app.models import User
 
-from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import TemplateView, ListView, UpdateView, DeleteView
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 
 
-class Index(TemplateView):
+class IndexView(TemplateView):
     form_class = UserForm()
     template_name = 'index.html'
     context = {}
@@ -33,7 +34,7 @@ class Index(TemplateView):
             return render(request, 'index.html', context=self.context)
 
 
-class StudentsList(ListView):
+class StudentsListView(ListView):
     context_object_name = 'students'
     template_name = 'students_list.html'
 
@@ -43,7 +44,7 @@ class StudentsList(ListView):
         return queryset
 
 
-class ProfessorsList(ListView):
+class ProfessorsListView(ListView):
     context_object_name = 'professors'
     template_name = 'professors_list.html'
 
@@ -51,3 +52,31 @@ class ProfessorsList(ListView):
         queryset = User.objects.filter(role='professor').all()
 
         return queryset
+
+
+class UserUpdateView(UpdateView):
+    model = User
+    template_name = 'user_update.html'
+    form_class = UserForm
+    success_url = reverse_lazy('index')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        return kwargs
+
+    def get_success_url(self):
+        return self.success_url
+
+
+class UserDeleteView(TemplateView):
+    model = User
+    template_name = 'index.html'
+
+    def get_object(self, queryset=None):
+        object_ = get_object_or_404(self.model, pk=self.kwargs['pk'])
+        return object_
+
+    def get(self, request, *args, **kwargs):
+        object = self.get_object()
+        object.delete()
+        return HttpResponseRedirect(reverse('index'))

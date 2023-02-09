@@ -16,35 +16,37 @@
         <div class="row">
             {% for student in students %}
                 <div class="col-6">
-                    <div class="card mb-3">
-                        <div class="card-body text-orange">
-                            <div class="row">
-                                <div class="col-6">
-                                    <h6 class="card-title">Full name</h6>
-                                    <p class="card-text">{{ student.first_name }} {{ student.last_name }}</p>
-                                    <h6 class="card-title">Date of birth</h6>
-                                    <p class="card-text">{{ student.date_of_birth }}</p>
-                                    <h6 class="card-title">Phone number</h6>
-                                    <p class="card-text">{{ student.phone_number }}</p>
-                                    <h6 class="card-title">E-mail</h6>
-                                    <p class="card-text">{{ student.email }}</p>
-                                </div>
+                    <a style="text-decoration: none" href="{% url 'student-update' pk=student.pk %}">
+                        <div class="card mb-3">
+                            <div class="card-body text-orange">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h6 class="card-title">Full name</h6>
+                                        <p class="card-text">{{ student.first_name }} {{ student.last_name }}</p>
+                                        <h6 class="card-title">Date of birth</h6>
+                                        <p class="card-text">{{ student.date_of_birth }}</p>
+                                        <h6 class="card-title">Phone number</h6>
+                                        <p class="card-text">{{ student.phone_number }}</p>
+                                        <h6 class="card-title">E-mail</h6>
+                                        <p class="card-text">{{ student.email }}</p>
+                                    </div>
 
 
-                                <div class="col-6">
-                                    <h6 class="card-title">Street</h6>
-                                    <p class="card-text">{{ student.street }} {{ student.street_number }}</p>
-                                    <h6 class="card-title">City</h6>
-                                    <p class="card-text">{{ student.city }}</p>
-                                    <h6 class="card-title">Post code</h6>
-                                    <p class="card-text">{{ student.post_number }}</p>
-                                    <h6 class="card-title">Country</h6>
-                                    <p class="card-text">{{ student.country }}</p>
+                                    <div class="col-6">
+                                        <h6 class="card-title">Street</h6>
+                                        <p class="card-text">{{ student.street }} {{ student.street_number }}</p>
+                                        <h6 class="card-title">City</h6>
+                                        <p class="card-text">{{ student.city }}</p>
+                                        <h6 class="card-title">Post code</h6>
+                                        <p class="card-text">{{ student.post_number }}</p>
+                                        <h6 class="card-title">Country</h6>
+                                        <p class="card-text">{{ student.country }}</p>
+                                    </div>
                                 </div>
+
                             </div>
-
                         </div>
-                    </div>
+                    </a>
                 </div>
 
             {% endfor %}

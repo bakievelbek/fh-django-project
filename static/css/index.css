@@ -6,13 +6,13 @@
     width: 100%;
 }
 
-.form form .btn {
+.btn {
     background: #ea5e0e;
     color: white;
     border: 1px solid #ea5e0e;
 }
 
-.form form .btn:hover {
+.btn:hover {
     background: white;
     color: #ea5e0e;
     transition: .3s;
